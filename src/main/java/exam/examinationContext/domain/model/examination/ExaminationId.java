@@ -1,23 +1,23 @@
-package exam.paperContext.domain.model.paper;
+package exam.examinationContext.domain.model.examination;
 
-import exam.paperContext.shared.ValueObject;
+import exam.examinationContext.shared.ValueObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
-public class PaperId implements ValueObject<PaperId> {
+public class ExaminationId implements ValueObject<ExaminationId> {
     private String id;
 
-    public static PaperId nextId() {
-        //TODO Generate ID
-        return null;
+    public static ExaminationId nextId() {
+        return new ExaminationId(UUID.randomUUID().toString());
     }
 
     @Override
-    public boolean sameValueAs(PaperId other) {
+    public boolean sameValueAs(ExaminationId other) {
         return equals(other);
     }
 
@@ -25,8 +25,8 @@ public class PaperId implements ValueObject<PaperId> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PaperId paperId = (PaperId) o;
-        return Objects.equals(id, paperId.id);
+        ExaminationId examinationId = (ExaminationId) o;
+        return Objects.equals(id, examinationId.id);
     }
 
     @Override
